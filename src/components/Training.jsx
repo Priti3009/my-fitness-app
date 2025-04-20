@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ShimmerTransition from "../assets/ShimmerTransition";
+import WorkoutModalTraining from "./WorkoutModalTraining";
 
 const Training = () => {
   const [loading, setLoading] = useState(true);
+   const [showModal,setShowModal]=useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
@@ -61,17 +63,7 @@ const Training = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="w-20 h-20 bg-amber-100 rounded-full flex justify-center items-center">
-              <span className="text-xl text-amber-500">4</span>
-            </div>
-            <div>
-              <h4 className="text-xl font-semibold text-purple-900">Plank</h4>
-              <p className="text-gray-600">
-                Hold the plank position for 30-60 seconds. Keep your body straight from head to heels.
-              </p>
-            </div>
-          </div>
+        
 
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 bg-amber-100 rounded-full flex justify-center items-center">
@@ -87,11 +79,13 @@ const Training = () => {
         </div>
 
         <div className="mt-6 text-center">
-          <button className="bg-pink-500 hover:bg-pink-700 text-white py-2 px-6 rounded-full text-lg transition">
-            Continue to Cool Down
+          <button className="bg-pink-500 hover:bg-pink-700 text-white py-2 px-6 rounded-full text-lg transition"
+          onClick={()=>setShowModal(true)}>
+            Start Workout
           </button>
         </div>
       </div>
+      {showModal && <WorkoutModalTraining onClose={()=>setShowModal(false)}/>}
     </div>
   );
 };

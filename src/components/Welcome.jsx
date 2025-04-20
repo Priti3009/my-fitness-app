@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ShimmerTransition from "../assets/ShimmerTransition";
 import { useNavigate } from "react-router-dom";
+import WorkoutCard from "./WorkoutCard";
+
 
 const Welcome = () => {
     const navigate=useNavigate();
@@ -39,10 +41,15 @@ const Welcome = () => {
   if (loading) return <ShimmerTransition />;
 
   return (
+    <>
+  
+    
     <div className="px-6 py-10">
+     
       <h2 className="text-4xl font-semibold text-center text-pink-500 mb-8">
         Welcome to Your Fitness Journey!
       </h2>
+      <WorkoutCard/>
 
       {/* Sections for Warm-Up, Training, Cool Down */}
       <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
@@ -84,6 +91,7 @@ const Welcome = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

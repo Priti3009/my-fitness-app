@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ShimmerTransition from "../assets/ShimmerTransition";
+import WorkoutModal from "./WorkoutModal";
 
 const WarmUp = () => {
   const [loading, setLoading] = useState(true);
+  const [showModal,setShowModal]=useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
@@ -17,7 +19,7 @@ const WarmUp = () => {
         Warm-Up: Get Ready for Your Workout!
       </h2>
 
-      {/* Warm-Up Instructions */}
+     
       <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
         <h3 className="text-2xl font-bold text-purple-950 mb-4">Warm-Up Routine</h3>
         <p className="text-gray-700 mb-4">
@@ -75,11 +77,13 @@ const WarmUp = () => {
         </div>
 
         <div className="mt-6 text-center">
-          <button className="bg-pink-500 hover:bg-pink-700 text-white py-2 px-6 rounded-full text-lg transition">
+          <button className="bg-pink-500 hover:bg-pink-700 text-white py-2 px-6 rounded-full text-lg transition
+          " onClick={()=>setShowModal(true)}>
             Start Workout
           </button>
         </div>
       </div>
+      {showModal && <WorkoutModal onClose={()=>setShowModal(false)}/>}
     </div>
   );
 };
